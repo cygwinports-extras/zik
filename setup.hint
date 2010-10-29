@@ -1,0 +1,5 @@
+category: Audio Gnome
+requires: gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-oss ruby ruby-globalhotkeys ruby-gst ruby-gtk2 ruby-mp3info ruby-rnotify ruby-taglib
+sdesc: "GTK+/GStreamer audio player"
+ldesc: "ZiK is an audio player based on gstreamer. It uses the path of 
+your audio files instead of a music library."

@@ -1,0 +1,16 @@
+ORIG_PN="ZiK"
+inherit ruby
+
+DESCRIPTION="GTK+/GStreamer audio player"
+HOMEPAGE="http://zik.rubyforge.org/"
+SRC_URI="mirror://rubyforge/zik/ZiK-${PV}.tar.gz"
+PATCH_URI="0.15.2-install.patch"
+
+MAKEOPTS+=" -j1"  # for install
+
+src_compile() {
+	cd ${B}
+	lndirs
+	./configure --prefix=/usr --docdir=/usr/share/doc/${PN} --destdir=${D}
+	cygmake
+}

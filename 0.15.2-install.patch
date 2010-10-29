@@ -1,0 +1,12 @@
+--- origsrc/ZiK-0.15.2/Makefile.in	2010-10-11 08:41:59.000000000 -0500
++++ src/ZiK-0.15.2/Makefile.in	2010-10-29 02:50:53.833458300 -0500
+@@ -77,7 +77,9 @@ install-exec: zik
+ 	$(INSTALL_PROGRAM) $(SRCDIR)/zik $(DESTDIR)$(BINDIR)/zik
+ 
+ install-link:
++ifneq ($(OS),Windows_NT)
+ 	ln --symbolic $(BINDIR)/zik $(DESTDIR)$(BINDIR)/ZiK
++endif
+ 
+ install-data:
+ 	$(INSTALL_DIR) $(DESTDIR)$(GUIDIR) $(DESTDIR)$(PIXDIR) $(DESTDIR)$(PIXDIR)/assistant $(DESTDIR)$(PLAYLISTDIR) $(DESTDIR)$(PLAYERDIR)
