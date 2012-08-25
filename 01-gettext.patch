@@ -1,0 +1,52 @@
+--- origsrc/ZiK-0.17.1/mod/notify/window.rb	2011-12-13 14:04:37.000000000 -0600
++++ src/ZiK-0.17.1/mod/notify/window.rb	2012-08-23 05:12:03.009745900 -0500
+@@ -31,7 +31,7 @@ class Window < Gtk::Window
+ 		@label.wrap=true#ellipsize -> true
+ 		@image=Gtk::Image.new(File.join(Pix_dir,'ZiK.svg'))
+ 		@frame=Gtk::Frame.new
+-		@frame.label_widget=Gtk::Label.new.set_markup('<span foreground="'+@config[:fg]+'">'+_('Playing')+'</span>')
++		@frame.label_widget=Gtk::Label.new.set_markup('<span foreground="'+@config[:fg]+'">Playing</span>')
+ 		@frame.add(@label)
+ 		@box=Gtk::HBox.new
+ 		@box.spacing=$border
+--- origsrc/ZiK-0.17.1/mod/notify/configwidget.rb	2011-12-13 14:04:37.000000000 -0600
++++ src/ZiK-0.17.1/mod/notify/configwidget.rb	2012-08-23 14:17:27.221463800 -0500
+@@ -27,31 +27,31 @@
+ 	def initialize(config)
+ 		@adj=Gtk::Adjustment.new(config[:time], 0.5, 20.0, 0.5, 1.0, 0)
+ 		@btime=Gtk::SpinButton.new(@adj, 1.0, 1)
+-		@time_frame=Gtk::Frame.new(_('Display time'))
++		@time_frame=Gtk::Frame.new('Display time')
+ 		@time_frame.add(@btime)
+ 
+-		@bradio1=Gtk::RadioButton.new(_('Use native notifications'))
++		@bradio1=Gtk::RadioButton.new('Use native notifications')
+ 		@bradio1.signal_connect('toggled'){
+ 			tf=@bradio1.active?
+ 			@bg_frame.sensitive=tf
+ 			@fg_frame.sensitive=tf
+ 		}
+-		@bradio2=Gtk::RadioButton.new(@bradio1, _('Use system notifications'))
++		@bradio2=Gtk::RadioButton.new(@bradio1, 'Use system notifications')
+ 
+ 		@bg_entry=Gtk::Entry.new
+ 		@bg_entry.text=config[:bg]
+ 		@bcolor=Gtk::ColorButton.new(Gdk::Color.parse(config[:bg]))
+-		@bcolor.tooltip_text=_('Select a color.')
++		@bcolor.tooltip_text='Select a color.'
+ 		@bcolor.signal_connect('color-set'){@bg_entry.text=@bcolor.color.to_s}
+-		@bg_frame=Gtk::Frame.new(_('Background color'))
++		@bg_frame=Gtk::Frame.new('Background color')
+ 		@bg_frame.add(hpack([@bg_entry, @bcolor]))
+ 
+ 		@fg_entry=Gtk::Entry.new
+ 		@fg_entry.text=config[:fg]
+ 		@bcolor2=Gtk::ColorButton.new(Gdk::Color.parse(config[:fg]))
+-		@bcolor2.tooltip_text=_('Select a color.')
++		@bcolor2.tooltip_text='Select a color.'
+ 		@bcolor2.signal_connect('color-set'){@fg_entry.text=@bcolor2.color.to_s}
+-		@fg_frame=Gtk::Frame.new(_('Foreground color'))
++		@fg_frame=Gtk::Frame.new('Foreground color')
+ 		@fg_frame.add(hpack([@fg_entry, @bcolor2]))
+ 
+ 		config[:native] ? @bradio1.active=true :  @bradio2.active=true
