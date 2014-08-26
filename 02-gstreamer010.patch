@@ -1,0 +1,11 @@
+--- origsrc/ZiK-0.17.1/ZiK.rb	2011-12-13 14:04:37.000000000 -0600
++++ src/ZiK-0.17.1/ZiK.rb	2014-08-25 21:28:05.675933100 -0500
+@@ -194,6 +194,8 @@ require File.join(Data_dir, 'playlist/pl
+ 
+ 
+ #Files needed for the audio player
++require 'rubygems'
++gem 'gstreamer', '~> 1.2'
+ require 'gst'
+ require File.join(Data_dir, 'player/player')
+ 

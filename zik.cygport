@@ -3,14 +3,19 @@ inherit ruby
 
 NAME="zik"
 VERSION=0.17.1
-RELEASE=1
+RELEASE=2
 CATEGORY="Audio"
 SUMMARY="GTK+/GStreamer audio player"
 DESCRIPTION="ZiK is an audio player based on GStreamer. It uses the path of
 your audio files instead of a music library."
 HOMEPAGE="http://zik.rubyforge.org/"
 SRC_URI="mirror://rubyforge/zik/ZiK-${VERSION}.tar.gz"
-PATCH_URI="01-gettext.patch"
+PATCH_URI="
+	01-gettext.patch
+	02-gstreamer010.patch
+"
+
+ARCH=noarch
 
 MAKEOPTS+=" -j1"  # for install
 
